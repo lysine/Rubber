@@ -186,4 +186,14 @@ cli.main(async (args, options) => {
         if (!igorErrors)
             cli.fatal(error.message);
     });
+    function kill(){
+        console.log("EXIT 0");
+        process.exit(0);
+    }
+    build.on("rawStdout", (data: string) => {
+        if(platform == "android" && data.includes("Igor Complete.")){
+            console.log("EXIT 0");
+            setTimeout(kill, 10000);
+        }
+    });
 });
