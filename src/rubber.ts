@@ -547,7 +547,7 @@ export function compile(options: IRubberOptions, clearRemoteCache: boolean = fal
             }
         });
     
-        igor.on('close', async(code) => {
+        igor.on('exit', async(code) => {
             if (!lanchingGame) {
                 emitter.emit("compileFinished", igorErrors);
             } else {
